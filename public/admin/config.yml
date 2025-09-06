@@ -1,0 +1,23 @@
+local_backend: true   # Permite editar en local sin OAuth
+
+backend:
+  name: git-gateway   # En local se ignora; placeholder
+  branch: main
+
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "docs"
+    label: "Documentación"
+    folder: "src/content/docs"
+    create: true
+    extension: "md"
+    slug: "{{slug}}"
+    nested:
+      depth: 100
+      summary: "{{title}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "string", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
